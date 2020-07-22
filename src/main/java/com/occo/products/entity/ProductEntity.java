@@ -28,7 +28,7 @@ public class ProductEntity implements Serializable {
   private String title;
 
   // bi-directional many-to-one association to ProductCombination
-  @OneToMany(mappedBy = "product")
+  @OneToMany(mappedBy = "product", orphanRemoval = true)
   private List<ProductCombinationEntity> productCombinations;
 
   public ProductEntity() {}

@@ -29,7 +29,7 @@ public class ProductCombinationEntity implements Serializable {
   private BigDecimal price;
 
   // bi-directional many-to-one association to CombinationConfigValue
-  @OneToMany(mappedBy = "productCombination")
+  @OneToMany(mappedBy = "productCombination", orphanRemoval = true)
   private List<CombinationConfigValueEntity> combinationConfigValues;
 
   // bi-directional many-to-one association to Product
