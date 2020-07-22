@@ -5,10 +5,13 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "combination_config_value")
+@NamedQuery(name = "CombinationConfigValueEntity.findAll",
+    query = "SELECT c FROM CombinationConfigValueEntity c")
 public class CombinationConfigValueEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -23,7 +26,7 @@ public class CombinationConfigValueEntity implements Serializable {
 
   // bi-directional many-to-one association to ConfigValue
   @ManyToOne
-  @JoinColumn(name = "config_value_id", insertable = false, updatable = false)
+  @JoinColumn(name = "config_value_id")
   private ConfigValueEntity configValue;
 
   // bi-directional many-to-one association to ProductCombination

@@ -6,9 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "product")
+@NamedQuery(name = "ProductEntity.findAll", query = "SELECT p FROM ProductEntity p")
 public class ProductEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -69,14 +73,16 @@ public class ProductEntity implements Serializable {
     this.productCombinations = productCombinations;
   }
 
-  public ProductCombinationEntity addProductCombination(ProductCombinationEntity productCombination) {
+  public ProductCombinationEntity addProductCombination(
+      ProductCombinationEntity productCombination) {
     getProductCombinations().add(productCombination);
     productCombination.setProduct(this);
 
     return productCombination;
   }
 
-  public ProductCombinationEntity removeProductCombination(ProductCombinationEntity productCombination) {
+  public ProductCombinationEntity removeProductCombination(
+      ProductCombinationEntity productCombination) {
     getProductCombinations().remove(productCombination);
     productCombination.setProduct(null);
 

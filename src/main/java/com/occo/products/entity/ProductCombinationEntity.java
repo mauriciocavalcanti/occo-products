@@ -8,11 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "product_combination")
+@NamedQuery(name = "ProductCombinationEntity.findAll",
+    query = "SELECT p FROM ProductCombinationEntity p")
 public class ProductCombinationEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -33,8 +36,7 @@ public class ProductCombinationEntity implements Serializable {
   @ManyToOne
   private ProductEntity product;
 
-  public ProductCombinationEntity() {
-  }
+  public ProductCombinationEntity() {}
 
   public Integer getId() {
     return this.id;
@@ -64,7 +66,8 @@ public class ProductCombinationEntity implements Serializable {
     return this.combinationConfigValues;
   }
 
-  public void setCombinationConfigValues(List<CombinationConfigValueEntity> combinationConfigValues) {
+  public void setCombinationConfigValues(
+      List<CombinationConfigValueEntity> combinationConfigValues) {
     this.combinationConfigValues = combinationConfigValues;
   }
 

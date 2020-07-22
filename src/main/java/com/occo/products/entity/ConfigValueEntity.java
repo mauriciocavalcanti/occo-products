@@ -6,12 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "config_value")
+@NamedQuery(name = "ConfigValueEntity.findAll", query = "SELECT c FROM ConfigValueEntity c")
 public class ConfigValueEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -28,6 +31,7 @@ public class ConfigValueEntity implements Serializable {
 
   // bi-directional many-to-one association to Config
   @ManyToOne
+  @JoinColumn(name = "config_id")
   private ConfigEntity config;
 
   public ConfigValueEntity() {}
@@ -52,7 +56,8 @@ public class ConfigValueEntity implements Serializable {
     return this.combinationConfigValues;
   }
 
-  public void setCombinationConfigValues(List<CombinationConfigValueEntity> combinationConfigValues) {
+  public void setCombinationConfigValues(
+      List<CombinationConfigValueEntity> combinationConfigValues) {
     this.combinationConfigValues = combinationConfigValues;
   }
 
