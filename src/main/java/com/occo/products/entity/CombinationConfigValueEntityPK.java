@@ -9,20 +9,20 @@ public class CombinationConfigValueEntityPK implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @Column(name = "combination_id", insertable = false, updatable = false)
-  private Integer combinationId;
+  @Column(name = "product_combination_id", insertable = false, updatable = false)
+  private Integer productCombinationId;
 
   @Column(name = "config_id", insertable = false, updatable = false)
   private Integer configId;
 
   public CombinationConfigValueEntityPK() {}
 
-  public Integer getCombinationId() {
-    return this.combinationId;
+  public Integer getProductCombinationId() {
+    return this.productCombinationId;
   }
 
-  public void setCombinationId(Integer combinationId) {
-    this.combinationId = combinationId;
+  public void setProductCombinationId(Integer productCombinationId) {
+    this.productCombinationId = productCombinationId;
   }
 
   public Integer getConfigId() {
@@ -41,14 +41,14 @@ public class CombinationConfigValueEntityPK implements Serializable {
       return false;
     }
     CombinationConfigValueEntityPK castOther = (CombinationConfigValueEntityPK) other;
-    return this.combinationId.equals(castOther.combinationId)
+    return this.productCombinationId.equals(castOther.productCombinationId)
         && this.configId.equals(castOther.configId);
   }
 
   public int hashCode() {
     final int prime = 31;
     int hash = 17;
-    hash = hash * prime + this.combinationId.hashCode();
+    hash = hash * prime + this.productCombinationId.hashCode();
     hash = hash * prime + this.configId.hashCode();
 
     return hash;

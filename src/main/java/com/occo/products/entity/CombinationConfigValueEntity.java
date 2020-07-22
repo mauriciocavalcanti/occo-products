@@ -16,18 +16,20 @@ public class CombinationConfigValueEntity implements Serializable {
   @EmbeddedId
   private CombinationConfigValueEntityPK id;
 
-  // bi-directional many-to-one association to Combination
-  @ManyToOne
-  private CombinationEntity combination;
-
   // bi-directional many-to-one association to Config
   @ManyToOne
+  @JoinColumn(name = "config_id", insertable = false, updatable = false)
   private ConfigEntity config;
 
   // bi-directional many-to-one association to ConfigValue
   @ManyToOne
-  @JoinColumn(name = "config_value_id")
+  @JoinColumn(name = "config_value_id", insertable = false, updatable = false)
   private ConfigValueEntity configValue;
+
+  // bi-directional many-to-one association to ProductCombination
+  @ManyToOne
+  @JoinColumn(name = "product_combination_id", insertable = false, updatable = false)
+  private ProductCombinationEntity productCombination;
 
   public CombinationConfigValueEntity() {}
 
@@ -37,14 +39,6 @@ public class CombinationConfigValueEntity implements Serializable {
 
   public void setId(CombinationConfigValueEntityPK id) {
     this.id = id;
-  }
-
-  public CombinationEntity getCombination() {
-    return this.combination;
-  }
-
-  public void setCombination(CombinationEntity combination) {
-    this.combination = combination;
   }
 
   public ConfigEntity getConfig() {
@@ -61,6 +55,14 @@ public class CombinationConfigValueEntity implements Serializable {
 
   public void setConfigValue(ConfigValueEntity configValue) {
     this.configValue = configValue;
+  }
+
+  public ProductCombinationEntity getProductCombination() {
+    return this.productCombination;
+  }
+
+  public void setProductCombination(ProductCombinationEntity productCombination) {
+    this.productCombination = productCombination;
   }
 
 }
