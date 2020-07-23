@@ -1,9 +1,7 @@
 # Running the project
 On project root directory run:
 ```
-$ ./mvnw clean install
-$ docker build ./ -t app
-$ docker-compose up
+$ docker-compose build && docker-compose up
 ```
 Project will be available at http://localhost:8080/
 
