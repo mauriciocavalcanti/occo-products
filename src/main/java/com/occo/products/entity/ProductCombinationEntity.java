@@ -3,6 +3,7 @@ package com.occo.products.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class ProductCombinationEntity implements Serializable {
   private BigDecimal price;
 
   // bi-directional many-to-one association to CombinationConfigValue
-  @OneToMany(mappedBy = "productCombination", orphanRemoval = true)
+  @OneToMany(mappedBy = "productCombination", cascade = CascadeType.REMOVE)
   private List<CombinationConfigValueEntity> combinationConfigValues;
 
   // bi-directional many-to-one association to Product

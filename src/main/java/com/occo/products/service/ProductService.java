@@ -62,9 +62,14 @@ public class ProductService {
   }
 
 
-  public void putProduct(Product product, Integer id) {
-    product.setId(id);
-    productRepository.save(productMapper.toEntity(product));
+  public void putProduct(Product product, Integer id) throws NotFoundException {
+    ProductEntity entity = productRepository.findById(id).orElse(null);
+    if (entity != null) {
+      product.setId(id);
+      productRepository.save(productMapper.toEntity(product));
+    } else {
+      throw new NotFoundException(PRODUCT_ID + id + DOES_NOT_EXIST);
+    }
   }
 
   public List<Product> getProducts() {

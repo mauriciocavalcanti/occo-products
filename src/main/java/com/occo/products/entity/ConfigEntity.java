@@ -29,7 +29,7 @@ public class ConfigEntity implements Serializable {
   private List<CombinationConfigValueEntity> combinationConfigValues;
 
   // bi-directional many-to-one association to ConfigValue
-  @OneToMany(mappedBy = "config", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  @OneToMany(mappedBy = "config", cascade = CascadeType.ALL)
   private List<ConfigValueEntity> configValues;
 
   public ConfigEntity() {}

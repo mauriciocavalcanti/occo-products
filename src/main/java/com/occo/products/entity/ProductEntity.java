@@ -2,6 +2,7 @@ package com.occo.products.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class ProductEntity implements Serializable {
   private String title;
 
   // bi-directional many-to-one association to ProductCombination
-  @OneToMany(mappedBy = "product", orphanRemoval = true)
+  @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
   private List<ProductCombinationEntity> productCombinations;
 
   public ProductEntity() {}
