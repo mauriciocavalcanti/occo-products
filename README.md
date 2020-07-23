@@ -1,6 +1,7 @@
 # Running the project
 On project root directory run:
 ```
+$ ./mvnw clean install
 $ docker build ./ -t app
 $ docker-compose up
 ```
